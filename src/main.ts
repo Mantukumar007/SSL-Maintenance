@@ -1,4 +1,5 @@
 import './style.css';
+import { inject } from '@vercel/analytics';
 import { exportDoc } from './exportDoc';
 import { exportExcel } from './exportExcel';
 import { exportPdf } from './exportPdf';
@@ -7,6 +8,9 @@ import { buildLoginView } from './viewLogin';
 import { AGENCIES, BLOCKS, LOGIN_CREDENTIALS, STORAGE_KEYS, type AppState, type AuthState, type CmsStatus, type FormDraft, type AgencyStatus, type SortField, type SortDirection, type MaintenanceRecord, type PanchayatDraft, type DeviceMap } from './types';
 import { createEmptyDraft, createEmptyPanchayatDraft, escapeHtml, getFilteredRecords, getPaginatedRecords, getTodayLocal, loadRecords, loadPanchayats, loadDevices, readFileAsPhoto, reassignSerialNumbers, sanitizeFilePart, saveRecords, savePanchayats, saveSession, sortRecords, downloadBackupJson, parseRawRecord, uploadPhotoToSupabase } from './utils';
 import { supabase } from './supabase';
+
+// Initialize Vercel Web Analytics
+inject();
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
 
